@@ -1,0 +1,25 @@
+{
+  "name": "todoer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mosaaleb/ToDoer.git"
+  },
+  "keywords": [],
+  "author": "Muhammad Ebeid <muhammed.ebeid@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mosaaleb/ToDoer/issues"
+  },
+  "homepage": "https://github.com/mosaaleb/ToDoer#readme",
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}
