@@ -5,10 +5,8 @@ const Model = (() => {
     }
   };
 
-  const add = (obj) => {
-    const data = JSON.parse(localStorage.projects);
-    data.push(obj);
-    localStorage.projects = JSON.stringify(data);
+  const add = (projects) => {
+    localStorage.projects = JSON.stringify(projects);
   };
 
   const getAll = () => JSON.parse(localStorage.projects);
