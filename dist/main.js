@@ -90,10 +90,47 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./model */ \"./src/model.js\");\n\n\n\n\nconst project = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Default', 'blue');\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title', 'description', Date.now(), 1));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title2', 'description2', Date.now(), 2));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title3', 'description3', Date.now(), 3));\n\nconst project1 = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Week', 'blue');\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description', Date.now(), 1));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description2', Date.now(), 2));\n\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].init();\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].add(project);\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].add(project1);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/model.js":
+/*!**********************!*\
+  !*** ./src/model.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst Model = (() => {\n  const init = () => {\n    if (!localStorage.projects) {\n      localStorage.projects = JSON.stringify([]);\n    }\n  };\n\n  const add = (obj) => {\n    const data = JSON.parse(localStorage.projects);\n    data.push(obj);\n    localStorage.projects = JSON.stringify(data);\n  };\n\n  const getAll = () => JSON.parse(localStorage.projects);\n\n  return {\n    init, add, getAll\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Model);\n\n\n//# sourceURL=webpack:///./src/model.js?");
+
+/***/ }),
+
+/***/ "./src/project.js":
+/*!************************!*\
+  !*** ./src/project.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst Project = (projectName, projectColor) => {\n  const name = projectName;\n  const color = projectColor;\n  const tasks = [];\n\n  const addTask = (task) => {\n    tasks.push(task);\n  };\n\n  const removeTask = (task) => {\n    tasks.splice(tasks.indexOf(task), 1);\n  };\n\n  return {\n    addTask, removeTask, name, color, tasks\n  };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Project);\n\n\n//# sourceURL=webpack:///./src/project.js?");
+
+/***/ }),
+
+/***/ "./src/task.js":
+/*!*********************!*\
+  !*** ./src/task.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst Task = (taskTitle, taskDescription, taskDueDate, taskPriority, taskDone = false) => {\n  const title = taskTitle;\n  const description = taskDescription;\n  const dueDate = taskDueDate;\n  const priority = taskPriority;\n  const done = taskDone;\n\n  return {\n    title, description, dueDate, priority, done\n  };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Task);\n\n\n//# sourceURL=webpack:///./src/task.js?");
 
 /***/ })
 

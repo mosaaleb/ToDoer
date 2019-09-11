@@ -13,6 +13,9 @@
   },
   "keywords": [],
   "author": "Muhammad Ebeid <muhammed.ebeid@gmail.com>",
+  "contributors": [
+    "Darshaan <email>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mosaaleb/ToDoer/issues"
