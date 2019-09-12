@@ -1,26 +1,26 @@
 import TasksView from './tasksView';
+import Controller from '../controller';
 
 const ProjectsView = (() => {
-  const renderProjects = (projects) => {
-    const navList = document.createElement('ul');
+  const projects = Controller.getProjects();
+  const navBar = document.getElementById('projects');
+  const navList = document.createElement('ul');
 
+  const render = () => {
     projects.forEach((project) => {
-      const listElement = document.createElement('li');
-      listElement.innerHTML = `
-        <a href="#" class="project">${project.name}</a>
-      `;
-      navList.appendChild(listElement);
-      listElement.addEventListener('click', () => {
-        const tasksContainer = document.querySelector('#tasks');
-        const taskList = TasksView.renderTasks(project);
-        tasksContainer.innerHTML = '';
-        tasksContainer.appendChild(taskList);
-      });
+      const projectItem = document.createElement('li');
+      projectItem.textContent = project.name;
+      projectItem.addEventListener('click', TasksView.render);
+      navList.appendChild(projectItem);
     });
-    return navList;
   };
 
-  return { renderProjects };
+  const init = () => {
+    navBar.appendChild(navList);
+    render();
+  };
+
+  return { init, render };
 })();
 
 export default ProjectsView;
