@@ -1,7 +1,8 @@
 import Task from './task';
 import Project from './project';
-import Model from './model';
-import UserInterface from './views/ui';
+import ProjectsView from './views/projectsView';
+import TasksView from './views/tasksView';
+import Controller from './controller';
 
 const projects = [];
 
@@ -17,11 +18,14 @@ project1.addTask(Task('week', 'description', Date.now(), 1));
 project1.addTask(Task('week', 'description2', Date.now(), 2));
 
 
-Model.init();
-Model.add(projects);
+Controller.init();
+ProjectsView.init();
+TasksView.init();
+// Model.init();
+// Model.add(projects);
 
-const project3 = Project('Another one', 'red');
-projects.push(project3);
-Model.add(projects);
+// const project3 = Project('Another one', 'red');
+// projects.push(project3);
+// Model.add(projects);
 
-UserInterface.init(projects);
+// UserInterface.init(projects);

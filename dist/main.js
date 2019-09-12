@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/controller.js":
+/*!***************************!*\
+  !*** ./src/controller.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./model */ \"./src/model.js\");\n\n\n\nconst Controller = (() => {\n  const setActiveProject = (project) => {\n    _model__WEBPACK_IMPORTED_MODULE_0__[\"default\"].setActiveProject(project);\n  };\n\n  const init = () => {\n    setActiveProject({\n      name: 'Default', color: 'black', tasks: []\n    });\n  };\n\n  const getActiveProject = () => _model__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getActiveProject();\n\n  const getProjects = () => _model__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getAll();\n\n  const getActiveProjectTasks = () => getActiveProject().tasks;\n  // const projects = getProjects();\n  // const activeProject = projects.find((project) => project.name === getActiveProject().name);\n\n  return {\n    init, setActiveProject, getActiveProject, getActiveProjectTasks, getProjects\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Controller);\n\n\n//# sourceURL=webpack:///./src/controller.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -94,7 +106,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./model */ \"./src/model.js\");\n/* harmony import */ var _views_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/ui */ \"./src/views/ui.js\");\n\n\n\n\n\nconst projects = [];\n\nconst project = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Default', 'blue');\nprojects.push(project);\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title', 'description', Date.now(), 1));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title2', 'description2', Date.now(), 2));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title3', 'description3', Date.now(), 3));\n\nconst project1 = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Week', 'blue');\nprojects.push(project1);\nproject1.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description', Date.now(), 1));\nproject1.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description2', Date.now(), 2));\n\n\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].init();\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].add(projects);\n\nconst project3 = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Another one', 'red');\nprojects.push(project3);\n_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].add(projects);\n\n_views_ui__WEBPACK_IMPORTED_MODULE_3__[\"default\"].init(projects);\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _views_projectsView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/projectsView */ \"./src/views/projectsView.js\");\n/* harmony import */ var _views_tasksView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/tasksView */ \"./src/views/tasksView.js\");\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./controller */ \"./src/controller.js\");\n\n\n\n\n\n\nconst projects = [];\n\nconst project = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Default', 'blue');\nprojects.push(project);\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title', 'description', Date.now(), 1));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title2', 'description2', Date.now(), 2));\nproject.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('title3', 'description3', Date.now(), 3));\n\nconst project1 = Object(_project__WEBPACK_IMPORTED_MODULE_1__[\"default\"])('Week', 'blue');\nprojects.push(project1);\nproject1.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description', Date.now(), 1));\nproject1.addTask(Object(_task__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('week', 'description2', Date.now(), 2));\n\n\n_controller__WEBPACK_IMPORTED_MODULE_4__[\"default\"].init();\n_views_projectsView__WEBPACK_IMPORTED_MODULE_2__[\"default\"].init();\n_views_tasksView__WEBPACK_IMPORTED_MODULE_3__[\"default\"].init();\n// Model.init();\n// Model.add(projects);\n\n// const project3 = Project('Another one', 'red');\n// projects.push(project3);\n// Model.add(projects);\n\n// UserInterface.init(projects);\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -106,7 +118,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tas
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst Model = (() => {\n  const init = () => {\n    if (!localStorage.projects) {\n      localStorage.projects = JSON.stringify([]);\n    }\n  };\n\n  const add = (projects) => {\n    localStorage.projects = JSON.stringify(projects);\n  };\n\n  const getAll = () => JSON.parse(localStorage.projects);\n\n  return {\n    init, add, getAll\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Model);\n\n\n//# sourceURL=webpack:///./src/model.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst Model = (() => {\n  let activeProject = null;\n\n  const init = () => {\n    if (!localStorage.projects) {\n      localStorage.projects = JSON.stringify([]);\n    }\n  };\n\n  const add = (projects) => {\n    localStorage.projects = JSON.stringify(projects);\n  };\n\n  const getAll = () => JSON.parse(localStorage.projects);\n\n  const getActiveProject = () => activeProject;\n\n  const setActiveProject = (project) => {\n    activeProject = project;\n  };\n\n  return {\n    init, add, getAll, activeProject, getActiveProject, setActiveProject\n  };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Model);\n\n\n//# sourceURL=webpack:///./src/model.js?");
 
 /***/ }),
 
@@ -142,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nconst Task = (taskTitle, task
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tasksView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tasksView */ \"./src/views/tasksView.js\");\n\n\nconst ProjectsView = (() => {\n  const renderProjects = (projects) => {\n    const navList = document.createElement('ul');\n\n    projects.forEach((project) => {\n      const listElement = document.createElement('li');\n      listElement.innerHTML = `\n        <a href=\"#\" class=\"project\">${project.name}</a>\n      `;\n      navList.appendChild(listElement);\n      listElement.addEventListener('click', () => {\n        const tasksContainer = document.querySelector('#tasks');\n        const taskList = _tasksView__WEBPACK_IMPORTED_MODULE_0__[\"default\"].renderTasks(project);\n        tasksContainer.innerHTML = '';\n        tasksContainer.appendChild(taskList);\n      });\n    });\n    return navList;\n  };\n\n  return { renderProjects };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ProjectsView);\n\n\n//# sourceURL=webpack:///./src/views/projectsView.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tasksView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tasksView */ \"./src/views/tasksView.js\");\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../controller */ \"./src/controller.js\");\n\n\n\nconst ProjectsView = (() => {\n  const projects = _controller__WEBPACK_IMPORTED_MODULE_1__[\"default\"].getProjects();\n  const navBar = document.getElementById('projects');\n  const navList = document.createElement('ul');\n\n  const render = () => {\n    projects.forEach((project) => {\n      const projectItem = document.createElement('li');\n      projectItem.textContent = project.name;\n      projectItem.addEventListener('click', _tasksView__WEBPACK_IMPORTED_MODULE_0__[\"default\"].render);\n      navList.appendChild(projectItem);\n    });\n  };\n\n  const init = () => {\n    navBar.appendChild(navList);\n    render();\n  };\n\n  return { init, render };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ProjectsView);\n\n\n//# sourceURL=webpack:///./src/views/projectsView.js?");
 
 /***/ }),
 
@@ -154,19 +166,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tas
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst TasksView = (() => {\n  const renderTasks = (project) => {\n    const list = document.createElement('ul');\n    project.tasks.forEach((task) => {\n      list.innerHTML += `\n        <li>${task.title}</li>\n      `;\n    });\n    return list;\n  };\n\n  return { renderTasks };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TasksView);\n\n\n//# sourceURL=webpack:///./src/views/tasksView.js?");
-
-/***/ }),
-
-/***/ "./src/views/ui.js":
-/*!*************************!*\
-  !*** ./src/views/ui.js ***!
-  \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tasksView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tasksView */ \"./src/views/tasksView.js\");\n/* harmony import */ var _projectsView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./projectsView */ \"./src/views/projectsView.js\");\n\n\n\nconst UserInterface = (() => {\n  const init = (projects) => {\n    // PROJECTS\n    const navBar = document.querySelector('.navbar');\n    const navList = _projectsView__WEBPACK_IMPORTED_MODULE_1__[\"default\"].renderProjects(projects);\n    navBar.appendChild(navList);\n    // TASKS\n    const tasksContainer = document.querySelector('#tasks');\n    const taskList = _tasksView__WEBPACK_IMPORTED_MODULE_0__[\"default\"].renderTasks(projects[0]);\n    tasksContainer.appendChild(taskList);\n  };\n\n  return { init };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (UserInterface);\n\n\n//# sourceURL=webpack:///./src/views/ui.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controller__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../controller */ \"./src/controller.js\");\n\n\nconst TasksView = (() => {\n  const tasks = _controller__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getActiveProjectTasks();\n  const tasksCollection = document.getElementById('tasks');\n\n  const render = () => {\n    tasks.forEach((task) => {\n      const taskItem = document.createElement('div');\n      taskItem.innerHTML = `\n        <h1>${task.title}</h1>\n        <p>${task.description}</p>\n        <p>${task.dueDate}</p>\n        <p>${task.priority}</p>\n        <p>${task.taskDone}</p>\n      `;\n      tasksCollection.append(taskItem);\n    });\n  };\n\n  const init = () => {\n    render();\n  };\n\n  // const renderTasks = (project) => {\n  //   const list = document.createElement('ul');\n  //   project.tasks.forEach((task) => {\n  //     list.innerHTML += `\n  //       <li>${task.title}</li>\n  //     `;\n  //   });\n  //   return list;\n  // };\n\n  return { init, render };\n})();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TasksView);\n\n\n//# sourceURL=webpack:///./src/views/tasksView.js?");
 
 /***/ })
 

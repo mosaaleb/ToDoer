@@ -1,4 +1,6 @@
 const Model = (() => {
+  let activeProject = null;
+
   const init = () => {
     if (!localStorage.projects) {
       localStorage.projects = JSON.stringify([]);
@@ -11,8 +13,14 @@ const Model = (() => {
 
   const getAll = () => JSON.parse(localStorage.projects);
 
+  const getActiveProject = () => activeProject;
+
+  const setActiveProject = (project) => {
+    activeProject = project;
+  };
+
   return {
-    init, add, getAll
+    init, add, getAll, activeProject, getActiveProject, setActiveProject
   };
 })();
 
