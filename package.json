@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --mode development"
+    "build-dev": "webpack -d --watch --mode development",
+    "build-prod": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "webpack-cli": "^3.3.8"
   },
   "dependencies": {
-    "date-fns": "^2.1.0"
+    "date-fns": "^2.1.0",
+    "source-map-loader": "^0.2.4"
   }
 }
