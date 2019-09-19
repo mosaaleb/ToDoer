@@ -24,4 +24,6 @@ const Model = (() => {
   };
 })();
 
+Model.init();
+
 export default Model;

@@ -5,14 +5,14 @@ const TasksView = (() => {
   const tasksCollection = document.getElementById('tasks');
 
   const render = () => {
+    tasksCollection.innerHTML = '';
     tasks.forEach((task) => {
       const taskItem = document.createElement('div');
       taskItem.innerHTML = `
         <h1>${task.title}</h1>
         <p>${task.description}</p>
         <p>${task.dueDate}</p>
-        <p>${task.priority}</p>
-        <p>${task.taskDone}</p>
+        <br>
       `;
       tasksCollection.append(taskItem);
     });
@@ -22,17 +22,9 @@ const TasksView = (() => {
     render();
   };
 
-  // const renderTasks = (project) => {
-  //   const list = document.createElement('ul');
-  //   project.tasks.forEach((task) => {
-  //     list.innerHTML += `
-  //       <li>${task.title}</li>
-  //     `;
-  //   });
-  //   return list;
-  // };
-
   return { init, render };
 })();
+
+TasksView.init();
 
 export default TasksView;

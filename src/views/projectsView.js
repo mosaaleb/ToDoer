@@ -7,10 +7,14 @@ const ProjectsView = (() => {
   const navList = document.createElement('ul');
 
   const render = () => {
+    navList.innerHTML = '';
     projects.forEach((project) => {
       const projectItem = document.createElement('li');
       projectItem.textContent = project.name;
-      projectItem.addEventListener('click', TasksView.render);
+      projectItem.addEventListener('click', () => {
+        Controller.setActiveProject(project);
+        TasksView.render();
+      });
       navList.appendChild(projectItem);
     });
   };
@@ -22,5 +26,7 @@ const ProjectsView = (() => {
 
   return { init, render };
 })();
+
+ProjectsView.init();
 
 export default ProjectsView;
