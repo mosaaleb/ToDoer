@@ -2,8 +2,8 @@ import Model from './model';
 import Controller from './controller';
 import Task from './task';
 import Project from './project';
-import TasksView from './views/tasksView';
-import ProjectsView from './views/projectsView';
+// import TasksView from './views/tasksView';
+// import ProjectsView from './views/projectsView';
 
 Model.init();
 Controller.init();
@@ -22,8 +22,8 @@ project1.addTask(Task('week', 'description', Date.now(), 1));
 project1.addTask(Task('week', 'description2', Date.now(), 2));
 
 Model.add(projects);
-ProjectsView.init();
-TasksView.init();
+// ProjectsView.init();
+// TasksView.init();
 
 // const project3 = Project('Another one', 'red');
 // projects.push(project3);

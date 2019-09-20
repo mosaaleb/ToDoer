@@ -13,6 +13,12 @@ const Model = (() => {
 
   const getAll = () => JSON.parse(localStorage.projects);
 
+  const addProject = (project) => {
+    const projects = getAll();
+    projects.push(project);
+    add(projects);
+  };
+
   const getActiveProject = () => activeProject;
 
   const setActiveProject = (project) => {
@@ -20,7 +26,7 @@ const Model = (() => {
   };
 
   return {
-    init, add, getAll, activeProject, getActiveProject, setActiveProject
+    init, add, getAll, activeProject, getActiveProject, setActiveProject, addProject
   };
 })();
 

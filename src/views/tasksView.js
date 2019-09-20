@@ -1,10 +1,10 @@
-import Controller from '../controller';
+// import Controller from '../controller';
 
 const TasksView = (() => {
-  const tasks = Controller.getActiveProjectTasks();
+  // const tasks = Controller.getActiveProjectTasks();
   const tasksCollection = document.getElementById('tasks');
 
-  const render = () => {
+  const render = (tasks) => {
     tasksCollection.innerHTML = '';
     tasks.forEach((task) => {
       const taskItem = document.createElement('div');
@@ -18,13 +18,13 @@ const TasksView = (() => {
     });
   };
 
-  const init = () => {
-    render();
+  const init = (tasks) => {
+    render(tasks);
   };
 
   return { init, render };
 })();
 
-TasksView.init();
+// TasksView.init();
 
 export default TasksView;
