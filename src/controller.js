@@ -23,10 +23,26 @@ const Controller = (() => {
     TasksView.render(getActiveProjectTasks());
   };
 
-  const AddProjectHandler = (projectName, projectColor) => {
+  const addProjectHandler = (projectName, projectColor) => {
     const project = Project(projectName, projectColor);
     Model.addProject(project);
-    // ProjectsView.render(getProjects());
+  };
+
+  const addTaskHandler = (taskTitle, taskDesc, taskDue) => {
+    const task = {
+      title: taskTitle,
+      description: taskDesc,
+      dueDate: taskDue
+    };
+    const activeProject = getActiveProject();
+    const updatedProject = Project(activeProject.name, activeProject.color, activeProject.tasks);
+    const allProjects = Model.getAll();
+
+    updatedProject.tasks.push(task);
+    const index = allProjects.findIndex((project) => project.name === updatedProject.name);
+    allProjects.splice(index, 1, updatedProject);
+    Model.add(allProjects);
+    // TasksView.render(getActiveProjectTasks());
   };
 
   const init = () => {
@@ -37,10 +53,12 @@ const Controller = (() => {
 
     // BIND
     ProjectsView.bindProjectSelect(projectSelectHandler);
-    ProjectsView.bindAddProject(AddProjectHandler);
+    ProjectsView.bindAddProject(addProjectHandler);
+    TasksView.bindAddTask(addTaskHandler);
 
     // ATTACH EVENTS
     Model.addProjectEvent.addObserver(ProjectsView.render);
+    Model.addTaskEvent.addObserver(TasksView.render);
   };
 
 
@@ -53,6 +71,5 @@ const Controller = (() => {
   };
 })();
 
-// Controller.init();
 
 export default Controller;

@@ -1,7 +1,7 @@
-const Project = (projectName, projectColor) => {
+const Project = (projectName, projectColor, projectTasks = []) => {
   const name = projectName;
   const color = projectColor;
-  const tasks = [];
+  const tasks = projectTasks;
 
   const addTask = (task) => {
     tasks.push(task);

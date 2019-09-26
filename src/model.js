@@ -3,6 +3,7 @@ import EventDispatcher from './eventDispatcher';
 const Model = (() => {
   let activeProject = null;
   const addProjectEvent = EventDispatcher();
+  const addTaskEvent = EventDispatcher();
 
   const init = () => {
     if (!localStorage.projects) {
@@ -12,6 +13,7 @@ const Model = (() => {
 
   const add = (projects) => {
     localStorage.projects = JSON.stringify(projects);
+    addTaskEvent.notify(activeProject.tasks);
   };
 
   const getAll = () => JSON.parse(localStorage.projects);
@@ -20,7 +22,6 @@ const Model = (() => {
     const projects = getAll();
     projects.push(project);
     add(projects);
-    // NOTIFY VIEW
     addProjectEvent.notify(projects);
   };
 
@@ -38,10 +39,11 @@ const Model = (() => {
     getActiveProject,
     setActiveProject,
     addProject,
-    addProjectEvent
+    addProjectEvent,
+    addTaskEvent
   };
 })();
 
-Model.init();
+// Model.init();
 
 export default Model;

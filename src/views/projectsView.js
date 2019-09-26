@@ -1,9 +1,4 @@
-// import TasksView from './tasksView';
-// import Controller from '../controller';
-
-
 const ProjectsView = (() => {
-  // const projects = Controller.getProjects();
   const navBar = document.getElementById('projects');
   const navList = document.createElement('ul');
   const form = document.createElement('form');
@@ -64,7 +59,5 @@ const ProjectsView = (() => {
     init, render, bindProjectSelect, bindAddProject
   };
 })();
-
-// ProjectsView.init();
 
 export default ProjectsView;
