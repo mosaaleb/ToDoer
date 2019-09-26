@@ -26,7 +26,7 @@ const Controller = (() => {
   const AddProjectHandler = (projectName, projectColor) => {
     const project = Project(projectName, projectColor);
     Model.addProject(project);
-    ProjectsView.render(getProjects());
+    // ProjectsView.render(getProjects());
   };
 
   const init = () => {
@@ -38,6 +38,9 @@ const Controller = (() => {
     // BIND
     ProjectsView.bindProjectSelect(projectSelectHandler);
     ProjectsView.bindAddProject(AddProjectHandler);
+
+    // ATTACH EVENTS
+    Model.addProjectEvent.addObserver(ProjectsView.render);
   };
 
 

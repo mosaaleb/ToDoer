@@ -1,5 +1,8 @@
+import EventDispatcher from './eventDispatcher';
+
 const Model = (() => {
   let activeProject = null;
+  const addProjectEvent = EventDispatcher();
 
   const init = () => {
     if (!localStorage.projects) {
@@ -17,6 +20,8 @@ const Model = (() => {
     const projects = getAll();
     projects.push(project);
     add(projects);
+    // NOTIFY VIEW
+    addProjectEvent.notify(projects);
   };
 
   const getActiveProject = () => activeProject;
@@ -26,7 +31,14 @@ const Model = (() => {
   };
 
   return {
-    init, add, getAll, activeProject, getActiveProject, setActiveProject, addProject
+    init,
+    add,
+    getAll,
+    activeProject,
+    getActiveProject,
+    setActiveProject,
+    addProject,
+    addProjectEvent
   };
 })();
 

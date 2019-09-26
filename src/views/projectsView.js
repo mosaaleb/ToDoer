@@ -1,6 +1,7 @@
 // import TasksView from './tasksView';
 // import Controller from '../controller';
 
+
 const ProjectsView = (() => {
   // const projects = Controller.getProjects();
   const navBar = document.getElementById('projects');
