@@ -2,8 +2,12 @@ import EventDispatcher from './eventDispatcher';
 
 const Model = (() => {
   let activeProject = null;
-  const addProjectEvent = EventDispatcher();
+
   const addTaskEvent = EventDispatcher();
+  const addProjectEvent = EventDispatcher();
+  const removeTaskEvent = EventDispatcher();
+  const projectSelectEvent = EventDispatcher();
+  const removeProjectEvent = EventDispatcher();
 
   const init = () => {
     if (!localStorage.projects) {
@@ -13,19 +17,17 @@ const Model = (() => {
 
   const add = (projects) => {
     localStorage.projects = JSON.stringify(projects);
-    addTaskEvent.notify(activeProject.tasks);
   };
 
   const getAll = () => JSON.parse(localStorage.projects);
+
+  const getActiveProject = () => activeProject;
 
   const addProject = (project) => {
     const projects = getAll();
     projects.push(project);
     add(projects);
-    addProjectEvent.notify(projects);
   };
-
-  const getActiveProject = () => activeProject;
 
   const setActiveProject = (project) => {
     activeProject = project;
@@ -40,10 +42,11 @@ const Model = (() => {
     setActiveProject,
     addProject,
     addProjectEvent,
-    addTaskEvent
+    addTaskEvent,
+    projectSelectEvent,
+    removeProjectEvent,
+    removeTaskEvent
   };
 })();
-
-// Model.init();
 
 export default Model;
