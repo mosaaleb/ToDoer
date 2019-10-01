@@ -5,9 +5,9 @@ const EventDispatcher = () => {
     observers.push(observer);
   };
 
-  const notify = (args) => {
+  const notify = (data) => {
     observers.forEach((observer) => {
-      observer(args);
+      observer.update(data);
     });
   };
 
