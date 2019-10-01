@@ -17,6 +17,9 @@ const Controller = (() => {
   const addProject = (projectName, projectColor) => {
     const project = Project(projectName, projectColor);
     Model.addProject(project);
+
+    setActiveProject(project);
+    Model.projectSelectEvent.notify(getActiveProjectTasks());
   };
 
   const addTask = (taskTitle, taskDesc, taskDue) => {

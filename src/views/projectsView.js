@@ -8,10 +8,19 @@ const ProjectsView = (() => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const projectName = document.querySelector('.project-name-input').value;
-    const projectColor = document.querySelector('.project-color-input').value;
+    const projectNameInput = document.querySelector('.project-name-input');
+    const projectColorInput = document.querySelector('.project-color-input');
+
+    const projectName = projectNameInput.value;
+    const projectColor = projectColorInput.value;
+    projectNameInput.value = '';
+    projectColorInput.value = '#ffffff';
     Controller.addProject(projectName, projectColor);
     Model.addProjectEvent.notify(Controller.getProjects());
+
+    // const projects = Controller.getProjects();
+    // Controller.setActiveProject(projects[projects.length - 1]);
+    // Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
   });
 
   const update = (projects) => {
@@ -26,8 +35,10 @@ const ProjectsView = (() => {
       projectItem.appendChild(projectName);
       projectItem.appendChild(deleteButton);
       projectName.addEventListener('click', () => {
-        Controller.setActiveProject(project);
-        Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+        if (project.name !== Controller.getActiveProject().name) {
+          Controller.setActiveProject(project);
+          Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+        }
       });
       deleteButton.addEventListener('click', (event) => {
         Controller.removeProject(event.target.id);

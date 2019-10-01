@@ -56,6 +56,7 @@ const TasksView = (() => {
     const taskDue = document.querySelector('.task-due').value;
     Controller.addTask(taskTitle, taskDesc, taskDue);
     Model.addTaskEvent.notify(Controller.getActiveProjectTasks());
+    Model.addProjectEvent.notify(Controller.getProjects());
   });
 
   const init = (tasks) => {

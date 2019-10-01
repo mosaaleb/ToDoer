@@ -9,7 +9,9 @@ import ProjectsView from './views/projectsView';
 Model.init();
 
 Controller.init();
-
+if (Controller.getProjects().length === 0) {
+  Controller.addProject('Default', '#ffffff');
+}
 ProjectsView.init(Controller.getProjects());
 TasksView.init(Controller.getActiveProjectTasks());
 // Adding observers
