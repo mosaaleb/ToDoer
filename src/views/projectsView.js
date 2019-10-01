@@ -1,31 +1,42 @@
+import Controller from '../controller';
+import Model from '../model';
+
 const ProjectsView = (() => {
   const navBar = document.getElementById('projects');
   const navList = document.createElement('ul');
   const form = document.createElement('form');
-  let handleProjectSelect = null;
-  let handleAddProject = null;
-
-  navList.addEventListener('click', (event) => {
-    const projectIndex = event.target.id;
-    handleProjectSelect(projectIndex);
-  });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const projectName = document.querySelector('.project-name-input').value;
     const projectColor = document.querySelector('.project-color-input').value;
-    handleAddProject(projectName, projectColor);
+    Controller.addProject(projectName, projectColor);
+    Model.addProjectEvent.notify(Controller.getProjects());
   });
 
-  const render = (projects) => {
+  const update = (projects) => {
     navList.innerHTML = '';
     projects.forEach((project, index) => {
-      const projectItem = document.createElement('li');
-      projectItem.textContent = project.name;
-      projectItem.id = index;
+      const projectItem = document.createElement('div');
+      const projectName = document.createElement('div');
+      const deleteButton = document.createElement('button');
+      deleteButton.id = index;
+      deleteButton.textContent = 'X';
+      projectName.textContent = project.name;
+      projectItem.appendChild(projectName);
+      projectItem.appendChild(deleteButton);
+      projectName.addEventListener('click', () => {
+        Controller.setActiveProject(project);
+        Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+      });
+      deleteButton.addEventListener('click', (event) => {
+        Controller.removeProject(event.target.id);
+        Model.removeProjectEvent.notify(Controller.getProjects());
+      });
       navList.appendChild(projectItem);
     });
   };
+
 
   const renderForm = () => {
     const input = document.createElement('input');
@@ -40,23 +51,14 @@ const ProjectsView = (() => {
     navBar.appendChild(form);
   };
 
-  // BIND
-  const bindProjectSelect = (handler) => {
-    handleProjectSelect = handler;
-  };
-
-  const bindAddProject = (handler) => {
-    handleAddProject = handler;
-  };
-
   const init = (projects) => {
     navBar.appendChild(navList);
-    render(projects);
+    update(projects);
     renderForm();
   };
 
   return {
-    init, render, bindProjectSelect, bindAddProject
+    init, update
   };
 })();
 

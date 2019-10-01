@@ -1,20 +1,9 @@
+import Controller from '../controller';
+import Model from '../model';
+
 const TasksView = (() => {
   const tasksCollection = document.getElementById('tasks');
   const form = document.createElement('form');
-  let handleAddTask = null;
-
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const taskTitle = document.querySelector('.task-title').value;
-    const taskDesc = document.querySelector('.task-desc').value;
-    const taskDue = document.querySelector('.task-due').value;
-    handleAddTask(taskTitle, taskDesc, taskDue);
-  });
-
-  const bindAddTask = (handler) => {
-    handleAddTask = handler;
-  };
 
   const renderForm = () => {
     form.innerHTML = '';
@@ -37,9 +26,9 @@ const TasksView = (() => {
     tasksCollection.appendChild(form);
   };
 
-  const render = (tasks) => {
+  const update = (tasks) => {
     tasksCollection.innerHTML = '';
-    tasks.forEach((task) => {
+    tasks.forEach((task, index) => {
       const taskItem = document.createElement('div');
       taskItem.innerHTML = `
         <h1>${task.title}</h1>
@@ -47,16 +36,35 @@ const TasksView = (() => {
         <p>${task.dueDate}</p>
         <br>
       `;
+      const deleteButton = document.createElement('button');
+      deleteButton.id = index;
+      deleteButton.innerText = 'X';
+      deleteButton.addEventListener('click', (event) => {
+        Controller.removeTask(event.target.id);
+        Model.removeTaskEvent.notify(Controller.getActiveProjectTasks());
+      });
+      taskItem.appendChild(deleteButton);
       tasksCollection.append(taskItem);
     });
     renderForm();
   };
 
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const taskTitle = document.querySelector('.task-title').value;
+    const taskDesc = document.querySelector('.task-desc').value;
+    const taskDue = document.querySelector('.task-due').value;
+    Controller.addTask(taskTitle, taskDesc, taskDue);
+    Model.addTaskEvent.notify(Controller.getActiveProjectTasks());
+  });
+
   const init = (tasks) => {
-    render(tasks);
+    update(tasks);
   };
 
-  return { init, render, bindAddTask };
+  return {
+    init, update
+  };
 })();
 
 export default TasksView;
