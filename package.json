@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "date-fns": "^2.1.0",
+    "handlebars": "^4.4.0",
     "source-map-loader": "^0.2.4"
   }
 }
