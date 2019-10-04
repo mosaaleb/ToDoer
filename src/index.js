@@ -6,6 +6,8 @@ import TasksView from './views/tasksView';
 import ProjectsView from './views/projectsView';
 
 
+require('handlebars');
+
 Model.init();
 
 Controller.init();
@@ -21,6 +23,41 @@ Model.addProjectEvent.addObserver(ProjectsView);
 Model.removeProjectEvent.addObserver(ProjectsView);
 Model.addTaskEvent.addObserver(TasksView);
 Model.removeTaskEvent.addObserver(TasksView);
+
+// const projects = [
+//   {
+//     name: 'Default',
+//     color: '#ffffff',
+//     tasks:
+//     [{
+//       title: 'Hello',
+//       description: 'Hello',
+//       duedate: '2019-02-01'
+//     }]
+//   },
+//   {
+//     name: 'new',
+//     color: '#000000',
+//     tasks:
+//     [{
+//       title: 'New',
+//       description: '',
+//       duedate: ''
+//     },
+//     {
+//       title: 'one',
+//       description: 'asdf',
+//       duedate: '2019-02-01'
+//     }
+//     ]
+//   }
+// ];
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const characterTemplate = document.getElementById('output');
+//   characterTemplate.innerHTML = template(projects);
+// });
 
 // Model.onLoadEvent.addObserver(ProjectsView);
 // Model.onLoadEvent.addObserver(TasksView);

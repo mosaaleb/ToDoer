@@ -1,10 +1,15 @@
 import Controller from '../controller';
 import Model from '../model';
+import projectsTemplate from '../index.hbs';
 
 const ProjectsView = (() => {
   const navBar = document.getElementById('projects');
   const navList = document.createElement('ul');
   const form = document.createElement('form');
+
+  const update = (projects) => {
+    navBar.innerHTML = projectsTemplate(projects);
+  };
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -23,31 +28,30 @@ const ProjectsView = (() => {
     // Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
   });
 
-  const update = (projects) => {
-    navList.innerHTML = '';
-    projects.forEach((project, index) => {
-      const projectItem = document.createElement('div');
-      const projectName = document.createElement('div');
-      const deleteButton = document.createElement('button');
-      deleteButton.id = index;
-      deleteButton.textContent = 'X';
-      projectName.textContent = project.name;
-      projectItem.appendChild(projectName);
-      projectItem.appendChild(deleteButton);
-      projectName.addEventListener('click', () => {
-        if (project.name !== Controller.getActiveProject().name) {
-          Controller.setActiveProject(project);
-          Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
-        }
-      });
-      deleteButton.addEventListener('click', (event) => {
-        Controller.removeProject(event.target.id);
-        Model.removeProjectEvent.notify(Controller.getProjects());
-      });
-      navList.appendChild(projectItem);
-    });
-  };
-
+  // const update = (projects) => {
+  //   navList.innerHTML = '';
+  //   projects.forEach((project, index) => {
+  //     const projectItem = document.createElement('div');
+  //     const projectName = document.createElement('div');
+  //     const deleteButton = document.createElement('button');
+  //     deleteButton.id = index;
+  //     deleteButton.textContent = 'X';
+  //     projectName.textContent = project.name;
+  //     projectItem.appendChild(projectName);
+  //     projectItem.appendChild(deleteButton);
+  //     projectName.addEventListener('click', () => {
+  //       if (project.name !== Controller.getActiveProject().name) {
+  //         Controller.setActiveProject(project);
+  //         Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+  //       }
+  //     });
+  //     deleteButton.addEventListener('click', (event) => {
+  //       Controller.removeProject(event.target.id);
+  //       Model.removeProjectEvent.notify(Controller.getProjects());
+  //     });
+  //     navList.appendChild(projectItem);
+  //   });
+  // };
 
   const renderForm = () => {
     const input = document.createElement('input');
