@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ToDoer</title>
+    <title>{{ htmlWebpackPlugin.options.title }}</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
   </head>
   <body>
@@ -12,22 +12,12 @@
 
       <nav class="navbar" id="projects">
         <ul>
+        {{#each .}}
           <li class="project-item">
-            <p></p>
-            <button id="">X</button>
+            <p>{{name}}</p>
+            <button id="{{key}}">X</button>
           </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
-          </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
-          </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
-          </li>
+        {{/each}}
         </ul>
       </nav>
 
@@ -37,5 +27,5 @@
       </div>
 
     </div>
-  <script type="text/javascript" src="main.js"></script></body>
+  </body>
 </html>

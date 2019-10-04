@@ -1,11 +1,11 @@
 const path = require('path');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const exclude = [path.resolve(__dirname, 'dist')];
 console.log(exclude);
 
 module.exports = {
   devtool: 'source-map',
-  entry: './src/index.js',
+  entry: path.join(__dirname, 'src', 'index.js'),
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -15,12 +15,20 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.js$/,
-      loader: 'source-map-loader',
-      exclude
-    }]
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude
+      },
+      {
+        test: /\.hbs$/,
+        loader: "handlebars-loader"
+      }
+    ]
   },
-  devServer: {
-    contentBase: 'dist/'
-  }
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'ToDoer',
+      template: path.join(__dirname, 'src', 'index.hbs')
+    })
+  ]
 };
