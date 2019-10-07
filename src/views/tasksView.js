@@ -1,6 +1,7 @@
 import Controller from '../controller';
 import Model from '../model';
 import tasksTemplate from '../hbs/tasks.hbs';
+import taskEditTemplate from '../hbs/editTask.hbs';
 
 const TasksView = (() => {
   const update = (tasks) => {
@@ -12,6 +13,25 @@ const TasksView = (() => {
       button.addEventListener('click', (event) => {
         Controller.removeTask(event.target.parentElement.id);
         Model.removeTaskEvent.notify(Controller.getActiveProjectTasks());
+      });
+    });
+
+    const editButtons = document.querySelectorAll('.task-edit-button');
+    editButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        const index = Number(event.target.parentElement.id);
+        const editTaskElement = document.querySelector('#edit-task');
+        editTaskElement.innerHTML = taskEditTemplate({ ...tasks[index], index });
+        const editTaskForm = document.querySelector('.edit-task-form');
+        editTaskForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const i = Number(e.target.id);
+          const title = e.target.querySelector('#title').value;
+          const description = e.target.querySelector('#description').value;
+          const dueDate = e.target.querySelector('#due-date').value;
+          Controller.editTask(i, { title, description, dueDate });
+          Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+        });
       });
     });
 

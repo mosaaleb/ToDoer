@@ -56,6 +56,15 @@ const Controller = (() => {
     Model.add(projects);
   };
 
+  const editTask = (index, task) => {
+    const projects = Model.getAll();
+    const activeProject = getActiveProject();
+    const activeProjectIndex = projects.findIndex((project) => project.name === activeProject.name);
+    activeProject.tasks.splice(index, 1, task);
+    projects.splice(activeProjectIndex, 1, activeProject);
+    Model.add(projects);
+  };
+
   return {
     init,
     setActiveProject,
@@ -65,7 +74,8 @@ const Controller = (() => {
     addProject,
     addTask,
     removeProject,
-    removeTask
+    removeTask,
+    editTask
   };
 })();
 
