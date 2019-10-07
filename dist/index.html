@@ -12,23 +12,29 @@
 
       <nav class="navbar" id="projects">
         <ul>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
+          <li class="project-item" id="compilation">
+            <p class="project-name"></p>
+            <button class="btn delete-project-button">Delete</button>
           </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
+          <li class="project-item" id="webpack">
+            <p class="project-name"></p>
+            <button class="btn delete-project-button">Delete</button>
           </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
+          <li class="project-item" id="webpackConfig">
+            <p class="project-name"></p>
+            <button class="btn delete-project-button">Delete</button>
           </li>
-          <li class="project-item">
-            <p></p>
-            <button id="">X</button>
+          <li class="project-item" id="htmlWebpackPlugin">
+            <p class="project-name"></p>
+            <button class="btn delete-project-button">Delete</button>
           </li>
         </ul>
+
+        <form id="project-form">
+          <input type="text" id="project-name-input">
+          <input type="color" id="project-color-input">
+          <button  id="add-project-button">Add Project</button>
+        </form>
       </nav>
 
       <div id="content" class="content">
