@@ -1,0 +1,15 @@
+{{#each tasks}}
+<div id={{@key}} class="task-item">
+  <h3>{{title}}</h3>
+  <p>{{description}}</p>
+  <p>{{dueDate}}</p>
+  <button class="task-delete-button">X</button>
+</div>
+{{/each}}
+
+<form id="task-form">
+  <input type="text" placeholder="Task title" class="task-title">
+  <input type="text" placeholder="Task description" class="task-desc">
+  <input type="date" class="task-due">
+  <button>Add Event</button>
+</form>

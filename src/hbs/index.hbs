@@ -11,20 +11,6 @@
     <div class="grid-container">
 
       <nav class="navbar" id="projects">
-        <ul>
-        {{#each .}}
-          <li class="project-item" id="{{@key}}">
-            <p class="project-name">{{name}}</p>
-            <button class="btn delete-project-button">Delete</button>
-          </li>
-        {{/each}}
-        </ul>
-
-        <form id="project-form">
-          <input type="text" id="project-name-input">
-          <input type="color" id="project-color-input">
-          <button  id="add-project-button">Add Project</button>
-        </form>
       </nav>
 
       <div id="content" class="content">

@@ -1,6 +1,6 @@
 import Controller from '../controller';
 import Model from '../model';
-import projectsTemplate from '../index.hbs';
+import projectsTemplate from '../hbs/projects.hbs';
 
 const ProjectsView = (() => {
   const navBar = document.getElementById('projects');
@@ -27,6 +27,12 @@ const ProjectsView = (() => {
     const projectItems = document.getElementsByClassName('project-name');
     [...deleteButton].forEach((button) => {
       button.addEventListener('click', (event) => {
+        const index = Number(event.target.parentElement.id);
+
+        if (projects[index].name === Controller.getActiveProject().name) {
+          Controller.setActiveProject(projects[0]);
+          Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
+        }
         Controller.removeProject(event.target.parentElement.id);
         Model.removeProjectEvent.notify(Controller.getProjects());
       });

@@ -28,7 +28,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'ToDoer',
-      template: path.join(__dirname, 'src', 'index.hbs')
+      template: path.join(__dirname, 'src','hbs', 'index.hbs')
     })
   ]
 };
