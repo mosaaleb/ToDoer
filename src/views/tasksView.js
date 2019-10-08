@@ -16,6 +16,13 @@ const TasksView = (() => {
       });
     });
 
+    const taskDoneCheckboxes = document.querySelectorAll('.task-done');
+    taskDoneCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', (event) => {
+        Controller.toggleDone(event.target.parentElement.id);
+      });
+    });
+
     const editButtons = document.querySelectorAll('.task-edit-button');
     editButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
@@ -29,7 +36,11 @@ const TasksView = (() => {
           const title = e.target.querySelector('#title').value;
           const description = e.target.querySelector('#description').value;
           const dueDate = e.target.querySelector('#due-date').value;
-          Controller.editTask(i, { title, description, dueDate });
+          const priority = e.target.querySelector('#priority').value;
+          const done = e.target.querySelector('#done').value;
+          Controller.editTask(i, {
+            title, description, dueDate, priority, done
+          });
           Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
         });
       });

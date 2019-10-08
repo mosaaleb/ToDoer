@@ -1,5 +1,8 @@
+// TODO: Use task factory in creating tasks
+
 import Model from './model';
 import Project from './project';
+// import Task from './task';
 // import ProjectsView from './views/projectsView';
 // import TasksView from './views/tasksView';
 
@@ -26,8 +29,11 @@ const Controller = (() => {
     const task = {
       title: taskTitle,
       description: taskDesc,
-      dueDate: taskDue
+      dueDate: taskDue,
+      priority: 2,
+      done: false
     };
+    // const task = Task(taskTitle, taskDesc, taskDue);
     const activeProject = getActiveProject();
     const allProjects = Model.getAll();
 
@@ -65,6 +71,15 @@ const Controller = (() => {
     Model.add(projects);
   };
 
+  const toggleDone = (index) => {
+    const projects = Model.getAll();
+    const activeProject = getActiveProject();
+    const activeProjectIndex = projects.findIndex((project) => project.name === activeProject.name);
+    const task = projects[activeProjectIndex].tasks[index];
+    task.done = !task.done;
+    Model.add(projects);
+  };
+
   return {
     init,
     setActiveProject,
@@ -75,7 +90,8 @@ const Controller = (() => {
     addTask,
     removeProject,
     removeTask,
-    editTask
+    editTask,
+    toggleDone
   };
 })();
 
