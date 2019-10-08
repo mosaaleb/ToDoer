@@ -1,10 +1,12 @@
 {{#each tasks}}
 <div id={{@key}} class="task-item">
-  <h3>{{title}}</h3>
+  <input type="checkbox" id="task-done" class="task-done" {{#if done }} checked {{/if}}>
+  <label for="task-done">{{title}}</label>
   <p>{{description}}</p>
   <p>{{dueDate}}</p>
-  <button class="task-delete-button">X</button>
-  <button class="task-edit-button">Edit</button>
+  <p>{{priority}}</p>
+  <span class="task-delete-button icon">&#10006;</span>
+  <span class="task-edit-button icon">&#9998;</span>
 </div>
 {{/each}}
 
@@ -12,5 +14,5 @@
   <input type="text" placeholder="Task title" class="task-title">
   <input type="text" placeholder="Task description" class="task-desc">
   <input type="date" class="task-due">
-  <button>Add Event</button>
+  <button>Add Task</button>
 </form>
