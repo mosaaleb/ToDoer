@@ -1,12 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import '@fortawesome/fontawesome-free/js/all';
 import Model from './model';
 import Controller from './controller';
-// import Task from './task';
-// import Project from './project';
 import TasksView from './views/tasksView';
 import ProjectsView from './views/projectsView';
-
-
-require('handlebars');
 
 Model.init();
 
@@ -23,64 +20,3 @@ Model.addProjectEvent.addObserver(ProjectsView);
 Model.removeProjectEvent.addObserver(ProjectsView);
 Model.addTaskEvent.addObserver(TasksView);
 Model.removeTaskEvent.addObserver(TasksView);
-
-// const projects = [
-//   {
-//     name: 'Default',
-//     color: '#ffffff',
-//     tasks:
-//     [{
-//       title: 'Hello',
-//       description: 'Hello',
-//       duedate: '2019-02-01'
-//     }]
-//   },
-//   {
-//     name: 'new',
-//     color: '#000000',
-//     tasks:
-//     [{
-//       title: 'New',
-//       description: '',
-//       duedate: ''
-//     },
-//     {
-//       title: 'one',
-//       description: 'asdf',
-//       duedate: '2019-02-01'
-//     }
-//     ]
-//   }
-// ];
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const characterTemplate = document.getElementById('output');
-//   characterTemplate.innerHTML = template(projects);
-// });
-
-// Model.onLoadEvent.addObserver(ProjectsView);
-// Model.onLoadEvent.addObserver(TasksView);
-
-// const projects = [];
-
-// const project = Project('Default', 'blue');
-// projects.push(project);
-// project.addTask(Task('d_title', 'description', Date.now(), 1));
-// project.addTask(Task('d_title2', 'description2', Date.now(), 2));
-// project.addTask(Task('d_title3', 'description3', Date.now(), 3));
-
-// const project1 = Project('Week', 'blue');
-// projects.push(project1);
-// project1.addTask(Task('week', 'description', Date.now(), 1));
-// project1.addTask(Task('week', 'description2', Date.now(), 2));
-
-// Model.add(projects);
-// ProjectsView.init();
-// TasksView.init();
-
-// const project3 = Project('Another one', 'red');
-// projects.push(project3);
-// Model.add(projects);
-
-// UserInterface.init(projects);

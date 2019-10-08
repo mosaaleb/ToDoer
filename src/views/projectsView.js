@@ -11,7 +11,6 @@ const ProjectsView = (() => {
       event.preventDefault();
       const projectNameInput = document.querySelector('#project-name-input');
       const projectColorInput = document.querySelector('#project-color-input');
-
       const projectName = projectNameInput.value;
       const projectColor = projectColorInput.value;
       projectNameInput.value = '';
@@ -22,10 +21,10 @@ const ProjectsView = (() => {
   };
 
   const update = (projects) => {
-    navBar.innerHTML = projectsTemplate(projects);
-    const deleteButton = document.getElementsByClassName('delete-project-button');
-    const projectItems = document.getElementsByClassName('project-name');
-    [...deleteButton].forEach((button) => {
+    navBar.innerHTML = projectsTemplate({ projects });
+    const deleteButtons = document.querySelectorAll('.delete-project-button');
+    const projectItems = document.querySelectorAll('.project-name');
+    deleteButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
         const index = Number(event.target.parentElement.id);
 
@@ -33,11 +32,11 @@ const ProjectsView = (() => {
           Controller.setActiveProject(projects[0]);
           Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
         }
-        Controller.removeProject(event.target.parentElement.id);
+        Controller.removeProject(index);
         Model.removeProjectEvent.notify(Controller.getProjects());
       });
     });
-    [...projectItems].forEach((project) => {
+    projectItems.forEach((project) => {
       project.addEventListener('click', (event) => {
         const allProjects = Controller.getProjects();
         Controller.setActiveProject(allProjects[event.target.parentElement.id]);

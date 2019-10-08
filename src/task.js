@@ -1,4 +1,4 @@
-const Task = (taskTitle, taskDescription, taskDueDate, taskPriority, taskDone = false) => {
+const Task = (taskTitle, taskDescription, taskDueDate, taskPriority = 1, taskDone = false) => {
   const title = taskTitle;
   const description = taskDescription;
   const dueDate = taskDueDate;
