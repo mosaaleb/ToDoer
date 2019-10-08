@@ -28,7 +28,13 @@ const TasksView = (() => {
       button.addEventListener('click', (event) => {
         const index = Number(event.target.parentElement.id);
         const editTaskElement = document.querySelector('#edit-task');
-        editTaskElement.innerHTML = taskEditTemplate({ ...tasks[index], index });
+
+        const projects = Controller.getProjects();
+        const activeProject = Controller.getActiveProject();
+        const i = projects.findIndex((project) => project.name === activeProject.name);
+        const allTasks = projects[i].tasks;
+
+        editTaskElement.innerHTML = taskEditTemplate({ ...allTasks[index], index });
         const editTaskForm = document.querySelector('.edit-task-form');
         editTaskForm.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -37,7 +43,8 @@ const TasksView = (() => {
           const description = e.target.querySelector('#description').value;
           const dueDate = e.target.querySelector('#due-date').value;
           const priority = e.target.querySelector('#priority').value;
-          const done = e.target.querySelector('#done').value;
+          let done = e.target.querySelector('#done').value;
+          done = done === 'true';
           Controller.editTask(i, {
             title, description, dueDate, priority, done
           });
