@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mosaaleb/ToDoer#readme",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
