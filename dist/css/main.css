@@ -135,7 +135,7 @@ table {
   border-spacing: 0;
 }
 
-/*  
+/*
 Custom
 */
 
@@ -143,4 +143,20 @@ Custom
   display: grid;
   grid-template-columns: 300px auto;
   grid-template-rows: 10vh;
+}
+
+/* 
+Side Bar Projects 
+*/
+
+.delete-project-button {
+  display: none;
+}
+
+.project-item:hover .delete-project-button {
+  display: inline;
+}
+
+.icon {
+  cursor: pointer;
 }
