@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import '@fortawesome/fontawesome-free/js/all';
+import './assets/main.css';
 import Model from './model';
 import Controller from './controller';
 import TasksView from './views/tasksView';
