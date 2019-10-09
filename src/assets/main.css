@@ -16,10 +16,23 @@ Side Bar Projects
   display: none;
 }
 
+.project-item:hover {
+  cursor: pointer;
+}
+
+.project-name {
+  display: flex;
+  align-items: center;
+}
+
 .project-item:hover .delete-project-button {
   display: inline;
 }
 
 .icon {
   cursor: pointer;
+}
+
+.active-project {
+  background-color: #6b46c1;
 }

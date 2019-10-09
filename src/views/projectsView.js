@@ -38,6 +38,12 @@ const ProjectsView = (() => {
     });
     projectItems.forEach((project) => {
       project.addEventListener('click', (event) => {
+        const projectElement = event.target.parentElement;
+        const activeElement = document.querySelectorAll('.active-project');
+        activeElement.forEach((element) => {
+          element.classList.remove('active-project');
+        });
+        projectElement.className += ' active-project';
         const allProjects = Controller.getProjects();
         Controller.setActiveProject(allProjects[event.target.parentElement.id]);
         Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());

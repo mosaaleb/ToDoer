@@ -1,18 +1,22 @@
 {{#each tasks}}
-<div id={{@key}} class="task-item">
-  <input type="checkbox" id="task-done" class="task-done" {{#if done }} checked {{/if}}>
-  <label for="task-done">{{title}}</label>
-  <p>{{description}}</p>
-  <p>{{dueDate}}</p>
-  <p>{{priority}}</p>
+<div id={{@key}} class="task-item mx-6 my-2 shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+  <p>
+  <span class="inline-block w-1/6">
+    <input type="checkbox" id="task-done" class="task-done" {{#if done }} checked {{/if}}>
+  </span>
+  <label for="task-done" class="-ml-1">{{title}}</label>
+  </p>
+  <p><span class="inline-block w-1/6">Description: </span>{{description}}</p>
+  <p><span class="inline-block w-1/6">Due Date: </span>{{dueDate}}</p>
+  <p><span class="inline-block w-1/6">Priority: </span>{{priority}}</p>
   <span class="task-delete-button icon">&#10006;</span>
   <span class="task-edit-button icon">&#9998;</span>
 </div>
 {{/each}}
 
-<form id="task-form">
-  <input type="text" placeholder="Task title" class="task-title">
-  <input type="text" placeholder="Task description" class="task-desc">
-  <input type="date" class="task-due">
-  <button>Add Task</button>
+<form id="task-form" class="mx-6 my-2 py-2 px-4">
+  <input type="text" class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-title" placeholder="Task title">
+  <input type="text" class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-desc" placeholder="Task description">
+  <input type="date" class="mx-2 shadow appearance-none border rounded py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-due">
+  <button class="shadow bg-blue-500 hover:bg-blue-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Add Task</button>
 </form>

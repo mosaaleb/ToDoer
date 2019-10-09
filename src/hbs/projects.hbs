@@ -1,10 +1,10 @@
 <ul>
   {{#each projects}}
-  <li class="project-item" id="{{@key}}">
-    <p class="project-name">{{name}}</p>
+  <li class="w-full project-item flex m-2 shadow bg-purple-500 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" id="{{@key}}">
+    <p class="project-name flex-auto">{{name}}</p>
     {{#unless @first}}
-    <span class="delete-project-button icon">&#10006;</span>
-    <span class="edit-project-button icon">&#9998;</span>
+    <span class="delete-project-button icon p-2">&#10006;</span>
+    <span class="edit-project-button icon p-2">&#9998;</span>
     {{/unless}}
     <div class="edit-project" style="display: none">
       <input type="color" value="{{color}}">
@@ -15,8 +15,8 @@
   {{/each}}
 </ul>
 
-<form id="project-form">
-  <input type="text" id="project-name-input">
-  <input type="color" id="project-color-input">
-  <button id="add-project-button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Add Project</button>
+<form id="project-form" class="m-1 w-full">
+  <input class="w-full m-1 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="project-name-input">
+  <input class="w-full m-1 border rounded focus:outline-none focus:shadow-outline" type="color" id="project-color-input">
+  <button id="add-project-button" class="w-full m-1 shadow bg-blue-500 hover:bg-blue-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Add Project</button>
 </form>
