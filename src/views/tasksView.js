@@ -31,7 +31,7 @@ const TasksView = (() => {
 
         const projects = Controller.getProjects();
         const activeProject = Controller.getActiveProject();
-        const i = projects.findIndex((project) => project.name === activeProject.name);
+        const i = projects.findIndex(project => project.name === activeProject.name);
         const allTasks = projects[i].tasks;
 
         editTaskElement.innerHTML = taskEditTemplate({ ...allTasks[index], index });
