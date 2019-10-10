@@ -19,7 +19,7 @@ const TasksView = (() => {
     const taskDoneCheckboxes = document.querySelectorAll('.task-done');
     taskDoneCheckboxes.forEach((checkbox) => {
       checkbox.addEventListener('change', (event) => {
-        Controller.toggleDone(event.target.parentElement.id);
+        Controller.toggleDone(event.target.parentElement.parentElement.parentElement.id);
       });
     });
 
@@ -48,6 +48,8 @@ const TasksView = (() => {
           Controller.editTask(i, {
             title, description, dueDate, priority, done
           });
+          const overlay = document.querySelector('.overlay');
+          overlay.parentElement.removeChild(overlay);
           Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
         });
       });
