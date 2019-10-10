@@ -38,14 +38,14 @@ const TasksView = (() => {
         const editTaskForm = document.querySelector('.edit-task-form');
         editTaskForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          const i = Number(e.target.id);
+          const editIndex = Number(e.target.id);
           const title = e.target.querySelector('#title').value;
           const description = e.target.querySelector('#description').value;
           const dueDate = e.target.querySelector('#due-date').value;
           const priority = e.target.querySelector('#priority').value;
           let done = e.target.querySelector('#done').value;
           done = done === 'true';
-          Controller.editTask(i, {
+          Controller.editTask(editIndex, {
             title, description, dueDate, priority, done
           });
           const overlay = document.querySelector('.overlay');
