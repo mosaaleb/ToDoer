@@ -7,17 +7,27 @@
   </head>
   <body>
 
-    <div class="grid-container">
-      <section>
-        <section class="projects" id="projects">
-        </section>
-      </section>
+    <div class="flex">
 
-      <div id="content" class="content">
-        <div id="tasks" class="tasks">
+      <section class="w-1/4 bg-gray-700 h-screen pt-5"><!-- sidebar -->
+        <div class="logo">
+          {{!-- put todoer logo here --}}
         </div>
-        <div id="edit-task"></div>
-      </div>
+        <div class="projects w-3/4 w-full" id="projects">
+        </div>
+      </section><!-- end of sidebar -->
+
+      <div id="content" class="content w-3/4"><!-- main content -->
+        <nav class="flex items-center h-16 shadow-lg font-serif text-2xl mb-10">
+          <h2 class="text-center flex-1">ToDoer</h2>
+        </nav>
+
+        <div id="tasks" class="tasks bg-gray-100">
+        </div>
+
+        <div id="edit-task">
+        </div>
+      </div><!-- end of main content -->
 
     </div>
   </body>

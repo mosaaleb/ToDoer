@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 300px auto;
-  grid-template-rows: 10vh;
-}
-
 /* 
 Side Bar Projects 
 */
