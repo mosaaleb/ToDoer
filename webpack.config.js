@@ -6,7 +6,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: path.join(__dirname, 'src', 'index.js'),
+  entry: path.join(__dirname, 'src', 'js', 'index.js'),
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
@@ -27,18 +27,19 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader',
+        options: { 
+          name: 'images/[name].[ext]',
+        }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ToDoer',
-      template: path.join(__dirname, 'src', 'hbs', 'index.hbs')
+      template: path.join(__dirname, 'src', 'index.html')
     }),
-    new BrowserSyncPlugin({
-      host: 'localhost',
-      port: 3000,
-      server: { baseDir: ['dist'] }
-    })
   ]
 };
