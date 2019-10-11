@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+Side Bar Projects 
+*/
+
+.delete-project-button {
+  display: none;
+}
+
+.edit-project-button {
+  display: none;
+}
+
+.project-item:hover {
+  cursor: pointer;
+}
+
+.project-item:hover .edit-project-button,
+.project-item:hover .delete-project-button {
+  display: inline;
+}
+
+.icon {
+  cursor: pointer;
+  height: 20px;
+  fill: white;
+}
+
+.active-project {
+  background-color: #6b46c1;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero {
+  background-image: linear-gradient(225deg,
+    rgba(109, 015, 135, 0.8) 0%, rgba(108, 45, 157, 0.8) 10%, rgba(104, 67, 179, 0.8) 20%, rgba(100, 87, 199, 0.8) 30%,
+    rgba(88, 106, 218, 0.8) 40%, rgba(79, 107, 223, 0.8) 50%, rgba(67, 108, 229, 0.8) 60%, rgba(51, 109, 234, 0.8) 70%,
+    rgba(40, 93, 227, 0.8) 80%, rgba(33, 76, 219, 0.8) 90%, rgba(31, 57, 210, 0.8) 100%),
+    url(../images/header.jpg);
+}

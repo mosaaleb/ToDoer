@@ -1,0 +1,22 @@
+<ul>
+  {{#each projects}}
+  <li class="px-4 flex h-12 items-center text-gray-600 project-item" id="{{@key}}" style="border-left: 8px solid {{color}}">
+    <p class="project-name flex-auto">{{name}}</p>
+    {{#unless @first}}
+    <img src="images/edit-icon.svg" class="edit-project-button icon">
+    <img src="images/delete-icon.svg" class="delete-project-button icon ml-4">
+    {{/unless}}
+    <div class="edit-project" style="display: none">
+      <input type="color" value="{{color}}">
+      <input type="text" value="{{name}}">
+      <button>Edit</button>
+    </div>
+  </li>
+  {{/each}}
+</ul>
+
+<form id="project-form" class="flex flex-wrap px-4 mt-5">
+  <input type="color" id="project-color-input" class="h-10 flex-initial focus:outline-none bg-gray-200" list="rainbow">
+  <input type="text" id="project-name-input" class="h-10 flex-1 bg-gray-200 appearance-none px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Project Name">
+  <button id="add-project-button" class="w-full bg-green-500 focus:outline-none text-white font-bold h-10">Add Project</button>
+</form>
