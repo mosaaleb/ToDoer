@@ -1,0 +1,10 @@
+<section class="overlay">
+  <form class="edit-task-form mx-6 my-2 py-2 px-4" id="{{index}}">
+    <input class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="title" id="title" value="{{title}}">
+    <input class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="description" id="description" value="{{description}}">
+    <input class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date" name="dueDate" id="due-date" value="{{dueDate}}">
+    <input class="mx-2 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="priority" id="priority" value="{{priority}}">
+    <input type="hidden" value={{done}} id="done">
+    <button class="shadow bg-blue-500 hover:bg-blue-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Edit</button>
+  </form>
+</section>
