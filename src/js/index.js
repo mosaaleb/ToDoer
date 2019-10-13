@@ -1,3 +1,4 @@
+import '../images/logo.png';
 import '../images/add-icon.svg';
 import '../images/delete-icon.svg';
 import '../images/edit-icon.svg';

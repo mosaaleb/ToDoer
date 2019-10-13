@@ -1,6 +1,11 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:500,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
+/* 'Work Sans', sans-serif; */
 
 /* 
 Side Bar Projects 
@@ -14,10 +19,6 @@ Side Bar Projects
   display: none;
 }
 
-.project-item:hover {
-  cursor: pointer;
-}
-
 .project-item:hover .edit-project-button,
 .project-item:hover .delete-project-button {
   display: inline;
@@ -26,11 +27,14 @@ Side Bar Projects
 .icon {
   cursor: pointer;
   height: 20px;
-  fill: white;
 }
 
 .active-project {
-  background-color: #6b46c1;
+  border-left: 4px solid #284AF6;
+  color: #284AF6;
+  font-weight: 600;
+  font-size: 1.1em;
+  padding-right: -10px;
 }
 
 .overlay {
@@ -43,6 +47,10 @@ Side Bar Projects
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  height: 100px;
 }
 
 .hero {
