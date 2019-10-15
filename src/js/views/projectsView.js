@@ -6,15 +6,32 @@ const ProjectsView = (() => {
   const navBar = document.getElementById('projects');
 
   const renderForm = () => {
+    let choosenColor = '#e53e3e';
+    let isOpen = false;
+    const dropDown = document.getElementById('color-drop-down');
+    const colorsContainer = document.getElementById('colors-container');
+    const colorOptions = document.querySelectorAll('.color-option');
+    dropDown.addEventListener('click', () => {
+      isOpen = !isOpen;
+      colorsContainer.style.visibility = isOpen ? 'visible' : 'hidden';
+    });
+
+    colorOptions.forEach((color) => {
+      color.addEventListener('click', () => {
+        choosenColor = color.dataset.value;
+        dropDown.children[0].style.backgroundColor = choosenColor;
+        colorsContainer.style.visibility = 'hidden';
+        isOpen = !isOpen;
+      });
+    });
+
     const form = document.getElementById('project-form');
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const projectNameInput = document.querySelector('#project-name-input');
-      const projectColorInput = document.querySelector('#project-color-input');
       const projectName = projectNameInput.value;
-      const projectColor = projectColorInput.value;
-      projectNameInput.value = '';
-      projectColorInput.value = '#ffffff';
+      const projectColor = choosenColor;
+      form.reset();
       Controller.addProject(projectName, projectColor);
       Model.addProjectEvent.notify(Controller.getProjects());
     });
@@ -22,6 +39,8 @@ const ProjectsView = (() => {
 
   const update = (projects) => {
     navBar.innerHTML = projectsTemplate({ projects });
+    const firstProjectItem = document.querySelectorAll('.project-item').item(0);
+    firstProjectItem.classList.add('active-project');
     const deleteButtons = document.querySelectorAll('.delete-project-button');
     const projectItems = document.querySelectorAll('.project-name');
     deleteButtons.forEach((button) => {
@@ -43,7 +62,7 @@ const ProjectsView = (() => {
         activeElement.forEach((element) => {
           element.classList.remove('active-project');
         });
-        projectElement.className += ' active-project';
+        projectElement.classList.add('active-project');
         const allProjects = Controller.getProjects();
         Controller.setActiveProject(allProjects[event.target.parentElement.id]);
         Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
