@@ -1,4 +1,3 @@
-import format from 'date-fns';
 import Controller from '../controller';
 import Model from '../model';
 import tasksTemplate from '../../templates/tasks.hbs';

@@ -35,7 +35,7 @@ const Controller = (() => {
     const allProjects = Model.getAll();
 
     activeProject.tasks.push(task);
-    const index = allProjects.findIndex((project) => project.name === activeProject.name);
+    const index = allProjects.findIndex(project => project.name === activeProject.name);
     allProjects.splice(index, 1, activeProject);
     Model.add(allProjects);
   };
@@ -53,7 +53,7 @@ const Controller = (() => {
   const removeTask = (index) => {
     const projects = Model.getAll();
     const activeProject = getActiveProject();
-    const activeProjectIndex = projects.findIndex((project) => project.name === activeProject.name);
+    const activeProjectIndex = projects.findIndex(project => project.name === activeProject.name);
     activeProject.tasks.splice(index, 1);
     projects.splice(activeProjectIndex, 1, activeProject);
     Model.add(projects);
@@ -62,7 +62,7 @@ const Controller = (() => {
   const editTask = (index, task) => {
     const projects = Model.getAll();
     const activeProject = getActiveProject();
-    const activeProjectIndex = projects.findIndex((project) => project.name === activeProject.name);
+    const activeProjectIndex = projects.findIndex(project => project.name === activeProject.name);
     activeProject.tasks.splice(index, 1, task);
     projects.splice(activeProjectIndex, 1, activeProject);
     Model.add(projects);
@@ -71,7 +71,7 @@ const Controller = (() => {
   const toggleDone = (index) => {
     const projects = Model.getAll();
     const activeProject = getActiveProject();
-    const activeProjectIndex = projects.findIndex((project) => project.name === activeProject.name);
+    const activeProjectIndex = projects.findIndex(project => project.name === activeProject.name);
     const task = projects[activeProjectIndex].tasks[index];
     task.done = !task.done;
     Model.add(projects);
