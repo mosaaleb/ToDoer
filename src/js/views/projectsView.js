@@ -1,3 +1,5 @@
+// TODO: fix bug when removing project to set active project
+
 import Controller from '../controller';
 import Model from '../model';
 import projectsTemplate from '../../templates/projects.hbs';
@@ -39,10 +41,10 @@ const ProjectsView = (() => {
 
   const update = (projects) => {
     navBar.innerHTML = projectsTemplate({ projects });
-    const firstProjectItem = document.querySelectorAll('.project-item').item(0);
-    firstProjectItem.classList.add('active-project');
+    const activeProjectIndex = Controller.getActiveProjectIndex();
+    const projectItems = document.querySelectorAll('.project-item');
+    projectItems.item(activeProjectIndex).classList.add('active-project');
     const deleteButtons = document.querySelectorAll('.delete-project-button');
-    const projectItems = document.querySelectorAll('.project-name');
     deleteButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
         const index = Number(event.target.parentElement.id);
