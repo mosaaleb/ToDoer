@@ -1,0 +1,22 @@
+{{#each tasks}}
+<div id={{@key}} class="task-item shadow bg-white p-2 mb-2">
+  <p>
+  <span class="inline-block w-1/6">
+    <input type="checkbox" id="task-done" class="task-done" {{#if done}} checked {{/if}}>
+  </span>
+  <label for="task-done" class="-ml-1">{{title}}</label>
+  </p>
+  <p><span class="inline-block w-1/6">Description: </span>{{description}}</p>
+  <p><span class="inline-block w-1/6">Due Date: </span>{{dueDate}}</p>
+  <p><span class="inline-block w-1/6">Priority: </span>{{priority}}</p>
+  <img src="images/delete-icon.svg" class="icon task-delete-button">
+  <img src="images/edit-icon.svg" class="icon task-edit-button">
+</div>
+{{/each}}
+
+<form id="task-form" class="mt-2">
+  <input type="text" class="shadow appearance-none border rounded p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-title" placeholder="Task title">
+  <input type="text" class="shadow appearance-none border rounded p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-desc" placeholder="Task description">
+  <input type="date" class="shadow appearance-none border rounded p-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline task-due">
+  <button class="shadow bg-blue-500 hover:bg-blue-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">Add Task</button>
+</form>
