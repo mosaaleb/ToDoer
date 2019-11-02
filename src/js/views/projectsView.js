@@ -50,11 +50,15 @@ const ProjectsView = (() => {
         const index = Number(event.target.parentElement.id);
 
         if (projects[index].name === Controller.getActiveProject().name) {
-          Controller.setActiveProject(projects[0]);
+          console.log(Controller.getProjects()[0])
+          Controller.setActiveProject(Controller.getProjects()[0]);
           Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
         }
         Controller.removeProject(index);
         Model.removeProjectEvent.notify(Controller.getProjects());
+        console.log('removed');
+        console.log(projectItems[0]);
+        projectItems.item(activeProjectIndex).classList.add('active-project');
       });
     });
     projectItems.forEach((project) => {

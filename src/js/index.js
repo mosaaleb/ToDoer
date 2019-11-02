@@ -18,7 +18,6 @@ ProjectsView.init(Controller.getProjects());
 TasksView.init(Controller.getActiveProjectTasks());
 
 // Adding observers
-// TODO: Replace all event attaching observers into separate module
 Model.projectSelectEvent.addObserver(TasksView);
 Model.addProjectEvent.addObserver(ProjectsView);
 Model.removeProjectEvent.addObserver(ProjectsView);
