@@ -1,5 +1,3 @@
-// TODO: fix bug when removing project to set active project
-
 import Controller from '../controller';
 import Model from '../model';
 import projectsTemplate from '../../templates/projects.hbs';
@@ -47,8 +45,8 @@ const ProjectsView = (() => {
     const deleteButtons = document.querySelectorAll('.delete-project-button');
     deleteButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-        const index = Number(event.target.parentElement.id);
-
+        event.stopPropagation();
+        const index = Number(event.target.closest('li').id);
         if (projects[index].name === Controller.getActiveProject().name) {
           Controller.setActiveProject(Controller.getProjects()[0]);
           Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
@@ -59,15 +57,12 @@ const ProjectsView = (() => {
       });
     });
     projectItems.forEach((project) => {
-      project.addEventListener('click', (event) => {
-        const projectElement = event.target.parentElement;
-        const activeElement = document.querySelectorAll('.active-project');
-        activeElement.forEach((element) => {
-          element.classList.remove('active-project');
-        });
-        projectElement.classList.add('active-project');
+      project.addEventListener('click', () => {
+        const activeProject = document.querySelector('.active-project');
+        activeProject.classList.remove('active-project');
+        project.classList.add('active-project');
         const allProjects = Controller.getProjects();
-        Controller.setActiveProject(allProjects[event.target.parentElement.id]);
+        Controller.setActiveProject(allProjects[project.id]);
         Model.projectSelectEvent.notify(Controller.getActiveProjectTasks());
       });
     });
