@@ -1,16 +1,17 @@
 {{#each tasks}}
 <div id={{@key}} class="task-item shadow bg-white p-2 mb-2">
-  <p>
-  <span class="inline-block w-1/6">
-    <input type="checkbox" id="task-done" class="task-done" {{#if done}} checked {{/if}}>
-  </span>
-  <label for="task-done" class="-ml-1">{{title}}</label>
-  </p>
-  <p><span class="inline-block w-1/6">Description: </span>{{description}}</p>
-  <p><span class="inline-block w-1/6">Due Date: </span>{{dueDate}}</p>
-  <p><span class="inline-block w-1/6">Priority: </span>{{priority}}</p>
-  <img src="images/delete-icon.svg" class="icon task-delete-button">
-  <img src="images/edit-icon.svg" class="icon task-edit-button">
+  <div class="task-header">
+    <input type="checkbox" id="task-done" class="task-done form-checkbox text-blue-700 border-2 border-blue-700 h-6 w-6 rounded-full" {{#if done}} checked {{/if}}>
+    <label for="task-done" class="-ml-1">{{title}}</label>
+  </div>
+  <div class="task-footer">
+    </p>
+    <p><span class="inline-block w-1/6">Description: </span>{{description}}</p>
+    <p><span class="inline-block w-1/6">Due Date: </span>{{dueDate}}</p>
+    <p><span class="inline-block w-1/6">Priority: </span>{{priority}}</p>
+    <img src="images/delete-icon.svg" class="icon task-delete-button">
+    <img src="images/edit-icon.svg" class="icon task-edit-button">
+  </div>
 </div>
 {{/each}}
 
