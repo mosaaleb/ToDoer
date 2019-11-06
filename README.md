@@ -1,6 +1,8 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/55be8953-54fb-4f34-b79a-6cd3f19d9714/deploy-status)](https://app.netlify.com/sites/sad-johnson-b66d7b/deploys)
+
 ## :memo: :heavy_check_mark: ToDoer
 
-> A javascript powered todo app.
+> A javascript powered todo app. [Live](https://sad-johnson-b66d7b.netlify.com/)
 
 #### Installation:
 ```
