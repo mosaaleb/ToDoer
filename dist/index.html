@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>ToDoer</title>
-  </head>
+  <link href="main.css" rel="stylesheet"></head>
   <body class="font-body">
-
     <div class="flex">
-      <section class="w-1/5 h-screen pt-10 shadow-inner bg-silverGray"><!-- sidebar -->
+      <section class="w-1/5 h-screen pt-10 shadow-inner bg-silverGray overflow-auto"><!-- sidebar -->
         <div class="text-center text-2xl mb-5">
           <img src="images/logo.png" alt="logo" class="h-16 mx-auto">
-          <h3>TO<span class="">DOER</span></h3>
+          <h3>TO<span>DOER</span></h3>
         </div>
 
         <div class="projects" id="projects">
@@ -26,7 +25,7 @@
           </div>
         </header>
 
-        <div id="tasks" class="p-5 tasks">
+        <div id="tasks" class="w-5/6 mx-auto tasks">
         </div>
 
         <div id="edit-task">
