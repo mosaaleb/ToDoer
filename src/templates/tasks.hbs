@@ -1,16 +1,27 @@
+<!-- TODO: checkbox border color is priority color -->
 {{#each tasks}}
-<div id={{@key}} class="task-item shadow bg-white p-2 mb-2">
-  <div class="task-header">
-    <input type="checkbox" id="task-done" class="task-done form-checkbox text-blue-700 border-2 border-blue-700 h-6 w-6 rounded-full" {{#if done}} checked {{/if}}>
-    <label for="task-done" class="-ml-1">{{title}}</label>
+<div id={{@key}} class="task-item shadow bg-white px-8">
+  <div class="task-header flex justify-between text-xl cursor-pointer h-16">
+    <div class="flex items-center">
+      <input type="checkbox" id="task-done" class="task-done form-checkbox text-blue-700 border-2 border-blue-700 h-6 w-6 rounded-full px-2" {{#if done}} checked {{/if}}>
+      <label for="task-done" class="px-2">{{title}}</label>
+    </div>
+    <div class="flex items-center">
+      <img src="images/edit-icon.svg" class="icon task-edit-button px-2">
+      <img src="images/delete-icon.svg" class="icon task-delete-button px-2">
+      <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24" stroke="#606F7B"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
+        xmlns="http://www.w3.org/2000/svg">
+        <polyline points="6 9 12 15 18 9">
+        </polyline>
+      </svg>
+    </div>
   </div>
-  <div class="task-footer">
+  <div class="task-footer hidden">
     </p>
     <p><span class="inline-block w-1/6">Description: </span>{{description}}</p>
     <p><span class="inline-block w-1/6">Due Date: </span>{{dueDate}}</p>
     <p><span class="inline-block w-1/6">Priority: </span>{{priority}}</p>
-    <img src="images/delete-icon.svg" class="icon task-delete-button">
-    <img src="images/edit-icon.svg" class="icon task-edit-button">
   </div>
 </div>
 {{/each}}
