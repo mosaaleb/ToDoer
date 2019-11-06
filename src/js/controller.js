@@ -10,6 +10,12 @@ const Controller = (() => {
 
   const getActiveProject = () => Model.getActiveProject();
 
+  const getActiveProjectIndex = () => {
+    const allProjects = Model.getAll();
+    const activeProject = getActiveProject();
+    return allProjects.findIndex(project => project.name === activeProject.name);
+  };
+
   const getProjects = () => Model.getAll();
 
   const getActiveProjectTasks = () => getActiveProject().tasks;
@@ -17,7 +23,6 @@ const Controller = (() => {
   const addProject = (projectName, projectColor) => {
     const project = Project(projectName, projectColor);
     Model.addProject(project);
-
     setActiveProject(project);
     Model.projectSelectEvent.notify(getActiveProjectTasks());
   };
@@ -38,10 +43,6 @@ const Controller = (() => {
     const index = allProjects.findIndex(project => project.name === activeProject.name);
     allProjects.splice(index, 1, activeProject);
     Model.add(allProjects);
-  };
-
-  const init = () => {
-    setActiveProject(getProjects()[0]);
   };
 
   const removeProject = (index) => {
@@ -77,6 +78,10 @@ const Controller = (() => {
     Model.add(projects);
   };
 
+  const init = () => {
+    setActiveProject(getProjects()[0]);
+  };
+
   return {
     init,
     setActiveProject,
@@ -88,7 +93,8 @@ const Controller = (() => {
     removeProject,
     removeTask,
     editTask,
-    toggleDone
+    toggleDone,
+    getActiveProjectIndex
   };
 })();
 

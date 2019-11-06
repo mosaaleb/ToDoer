@@ -6,12 +6,11 @@
     <title>ToDoer</title>
   </head>
   <body class="font-body">
-
     <div class="flex">
-      <section class="w-1/5 h-screen pt-10 shadow-inner bg-silverGray"><!-- sidebar -->
+      <section class="w-1/5 h-screen pt-10 shadow-inner bg-silverGray overflow-auto"><!-- sidebar -->
         <div class="text-center text-2xl mb-5">
           <img src="images/logo.png" alt="logo" class="h-16 mx-auto">
-          <h3>TO<span class="">DOER</span></h3>
+          <h3>TO<span>DOER</span></h3>
         </div>
 
         <div class="projects" id="projects">
@@ -21,12 +20,12 @@
       <div id="content" class="content w-4/5 bg-gray-200"><!-- main content -->
         <header class="flex items-end text-2xl mb-10 hero bg-cover bg-center h-40">
           <div class="p-5 text-white">
-            <h2 class="text-4xl">Monday</h2>
-            <h2 class="text-2xl">Thursday, April 20</h2>
+            <h2 class="text-4xl" id="date"></h2>
+            <h2 class="text-2xl" id="day-time"></h2>
           </div>
         </header>
 
-        <div id="tasks" class="p-5 tasks">
+        <div id="tasks" class="w-5/6 mx-auto tasks">
         </div>
 
         <div id="edit-task">

@@ -13,7 +13,10 @@ npm run build-prod
 ```
 
 #### Description
-The application built using the **MVC** Architecture and **Observer** design pattern.
+The application is built using the **MVC** Architecture and uses the following design patterns:
+- **Revealing Module**
+- **Observer**
+- **Factory**
 
 ![Screenshot from 2019-10-14 10-03-46](https://user-images.githubusercontent.com/4246637/66750078-cc7b2c80-ee8b-11e9-8597-5fbba96d8634.png)
 

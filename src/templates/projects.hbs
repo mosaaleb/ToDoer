@@ -1,12 +1,22 @@
-<ul class="mb-5">
+<!-- TODO: Add user local Time instead of stub -->
+<!-- TODO: Edit project functionality -->
+<!-- FIXME: When deleting a tasks project tasks number doesn't update -->
+
+
+<ul class="mb-10">
   {{#each projects}}
-  <li class="px-5 flex h-12 items-center text-gray-600 cursor-pointer font-body project-item" id="{{@key}}" >
-    <p class="project-name flex-auto">{{name}}</p>
+  <li class="flex px-5 justify-between h-12 text-gray-600 cursor-pointer font-body border-l-5 border-silverGray project-item" id="{{@key}}" >
+      <div class="flex -mx-1">
+        <p class="project-name self-center px-1">{{name}}</p>
+        <p class="text-red-700 font-light px-1">{{tasks.length}}</p>
+      </div>
     {{#unless @first}}
-    <img src="images/edit-icon.svg" class="edit-project-button icon">
-    <img src="images/delete-icon.svg" class="delete-project-button icon ml-4">
+    <div class="flex justify-end -mx-2 items-center">
+      <img src="images/edit-icon.svg" class="edit-project-button icon px-2">
+      <img src="images/delete-icon.svg" class="delete-project-button icon px-2">
+    </div>
     {{/unless}}
-    <div class="edit-project" style="display: none">
+    <div class="edit-project hidden">
       <input type="color" value="{{color}}">
       <input type="text" value="{{name}}">
       <button>Edit</button>
@@ -15,8 +25,20 @@
   {{/each}}
 </ul>
 
-<form id="project-form" class="flex flex-wrap px-5 mt-5">
-  <input type="color" id="project-color-input" class="h-10 flex-initial focus:outline-none bg-gray-200" list="rainbow">
-  <input type="text" id="project-name-input" class="h-10 flex-1 bg-gray-200 appearance-none px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Project Name">
-  <button id="add-project-button" class="w-full bg-green-500 focus:outline-none text-white h-10">Add Project</button>
+<form id="project-form" class="flex flex-no-wrap px-5 mt-5 border-l-5 border-silverGray">
+  <div class="bg-white cursor-pointer flex" id="color-drop-down">
+    <div class="rounded-full h-8 w-8 border-solid border-2 border-blue-200 bg-red-600 m-auto"></div>
+  </div>
+  <input type="text" id="project-name-input" class="w-2/3 px-2 h-10 bg-gray-200 appearance-none text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" placeholder="Project Name" autocomplete="off">
+  <button id="add-project-button" class="bg-blue-700 focus:outline-none text-white h-10 px-3 font-bold">+</button>
 </form>
+<ul class="flex flex-wrap bg-white rounded p-1 my-2 mx-5 invisible w-56 border-l-5 border-silverGray" id="colors-container">
+  <li data-value="#e53e3e" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-red-600"></li>
+  <li data-value="#319795" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-teal-600"></li>
+  <li data-value="#d53f8c" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-pink-600"></li>
+  <li data-value="#38a169" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-green-600"></li>
+  <li data-value="#dd6b20" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-orange-600"></li>
+  <li data-value="#d69e2e" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-yellow-600"></li>
+  <li data-value="#5a67d8" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-indigo-600"></li>
+  <li data-value="#805ad5" class="color-option rounded-full mr-1 mb-1 h-8 w-8 border-solid border-2 cursor-pointer border-blue-200 bg-purple-600"></li>
+</ul>

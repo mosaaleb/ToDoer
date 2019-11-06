@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const exclude = [path.resolve(__dirname, 'dist')];
 console.log(exclude);
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader', 'postcss-loader']
+        loader: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
       },
       {
         test: /\.(jpg|png|svg)$/,
@@ -37,9 +37,19 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 3001
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html')
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: false
+    })
   ]
 };
